@@ -29,6 +29,7 @@
 
 (defconst udev-match-keywords
   '("ACTION"
+    "BUS"
     "DEVPATH"
     "KERNEL"
     "NAME"
@@ -47,6 +48,7 @@
 (defconst udev-matchparam-keywords
   '("ATTR"
     "SYSCTL"
+    "SYSFS"
     "ATTRS"
     "ENV"
     "CONST"
@@ -78,7 +80,7 @@
      (1 font-lock-constant-face))
 
     (,(concat (regexp-opt udev-matchparam-keywords 'words)
-              "{\\([_A-Za-z0-9]+\\)}"
+              "{\\([/._A-Za-z0-9]+\\)}"
               (regexp-opt '("==" "!=")))
      (1 font-lock-constant-face)
      (2 font-lock-variable-name-face))
@@ -88,7 +90,7 @@
      (1 font-lock-builtin-face))
 
     (,(concat (regexp-opt udev-assignparam-keywords 'words)
-              "{\\([_A-Za-z0-9]+\\)}"
+              "{\\([/._A-Za-z0-9]+\\)}"
               (regexp-opt '("+=" "-=" ":=" "=")))
      (1 font-lock-builtin-face)
      (2 font-lock-variable-name-face))
